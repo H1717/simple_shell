@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-  * get_environ - return the string array copy of our environ
-  * @info: Structure containing potential arguments. Used to maintain
-  *	constant function prototype.
-  * Return: ALWAYS 0
-  */
+ * get_environ - return the string array copy of our environ
+ * @info: Structure containing potential arguments. Used to maintain
+ *	    constant function prototype.
+ * Return: Always 0
+ */
 char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
@@ -13,16 +13,18 @@ char **get_environ(info_t *info)
 		info->environ = list_to_string(info->env);
 		info->env_changed = 0;
 	}
+
 	return (info->environ);
 }
+
 /**
-  * _unsetenv - Remove am environment variable
-  * @info: Structure containing potential arguments.Used to maintain
-  *        constant function prototype.
-  *  Return: 1 on delete, 0 otherwise
-  * @var: the string env var property
-  */
-int_unsetenv(info_t *info, char *var)
+ * _unsetenv - Remove am environment variable
+ * @info: Structure containing potential arguments.Used to maintain
+ *	    constant function prototype.
+ *  Return: 1 on delete, 0 otherwise
+ * @var: the string env var property
+ */
+int _unsetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
 	size_t i = 0;
@@ -48,15 +50,15 @@ int_unsetenv(info_t *info, char *var)
 }
 
 /**
-  * _setenv - Initialize a new environment variable,
-  *             or modify an existing one
-  * @info: Structure containing potential arguments. Used to maintain
-  *        constant function prototype.
-  * @var: the string env var property
-  * @value: the string env var value
-  *  Return: Always 0
-  */
-int_setenv(info_t *info, char *var, char *value)
+ * _setenv - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ * @var: the string env var property
+ * @value: the string env var value
+ *  Return: Always 0
+ */
+int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
@@ -89,5 +91,3 @@ int_setenv(info_t *info, char *var, char *value)
 	info->env_changed = 1;
 	return (0);
 }
-
-
