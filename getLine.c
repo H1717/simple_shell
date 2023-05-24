@@ -1,13 +1,13 @@
 #include "shell"
 
 /**
-  * input_buf - buffers chained commands
-  * @info: parameter struct
-  * @buf: adress of buffer
-  * @len: address of len var
-  *
-  * Return: bytes read
-  */
+ * input_buf - buffers chained commands
+ * @info: parameter struct
+ * @buf: address of buffer
+ * @len: address of len var
+ *
+ * Return: bytes read
+ */
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
@@ -45,11 +45,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
-  * get_input - gets a line minus the newline
-  * @info: parameter struct
-  *
-  * Return: bytes read
-  */
+ * get_input - gets a line minus the newline
+ * @info: parameter struct
+ *
+ * Return: bytes read
+ */
 ssize_t get_input(info_t *info)
 {
 	static char *buf; /* the ';' command chain buffer */
@@ -130,6 +130,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		s = *length;
 	if (i == len)
 		i = len = 0;
+
 	r = read_buf(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
@@ -156,14 +157,14 @@ int _getline(info_t *info, char **ptr, size_t *length)
 }
 
 /**
-  * sigintHandler - blocks ctrl-C
-  * @sig_num: the signal number
-  *
-  * Return: void
-  */
-void signitHandler(__attribute__((unused))intsig_num)
+ * sigintHandler - blocks ctrl-C
+ * @sig_num: the signal number
+ *
+ * Return: void
+ */
+void signitHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
-	_puts("$");
+	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
