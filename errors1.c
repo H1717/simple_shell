@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _erratoi - converts a string  to i
+ * _erratoi - converts a string to an interger
  * @s: the string to be converted
- * Return: 0 if !n in s
+ * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
 int _erratoi(char *s)
@@ -12,7 +12,7 @@ int _erratoi(char *s)
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++;  
+		s++; /* TODO: why does this make main return 255? */
 	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -31,8 +31,8 @@ int _erratoi(char *s)
 /**
  * print_error - prints an error message
  * @info: the parameter & return info structure
- * @estr: s in  specified error type
- * Return: 0 if !n in string, con m in otheer
+ * @estr: string containain specified error type
+ * Return: 0 if no number in string, converted number otherwise
  *        -1 on error
  */
 void print_error(info_t *info, char *estr)
@@ -47,11 +47,11 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - function prints a decimal 
+ * print_d - function prints a decimal (interger) number (base 10)
  * @input: the input
- * @fd: the file descriptor to write to
+ * @fd: the filedescriptor to write to
  *
- * Return: number of characters 
+ * Return: number of characters printed
  */
 int print_d(int input, int fd)
 {
